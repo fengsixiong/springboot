@@ -1,0 +1,26 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
+    username: scott
+    password: 123456
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.Oracle10gDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+schedule:
+  #线程池大小
+  threadPoolSize: 10
+  #具体任务路径
+  jobs:
+    testSchedule:
+      cron: 0/10 * * * * ?           #时间表达式
+      data-size: 1000         #接口数据量
+      enable: false            #是否开启
+
